@@ -1,21 +1,16 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import Button, { ButtonProps } from "./Button";
+import LoginButton, { LoginButtonProps } from "./Button";
 
 export default {
-  title: "Common/Button",
-  component: Button,
+  title: "Common/LoginButton",
+  component: LoginButton,
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+const Template: Story<LoginButtonProps> = (args) => <LoginButton {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  primary: true,
-  label: "Button",
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: "Button",
+  clickable: true,
+  label: "Login",
 };
