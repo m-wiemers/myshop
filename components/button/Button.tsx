@@ -1,16 +1,21 @@
+import { MouseEventHandler } from "react";
 import styles from "./Button.module.css";
 
 export type ButtonProps = {
-  primary: boolean;
   label: string;
+  clickable: boolean;
+  onClick: MouseEventHandler<HTMLButtonElement>;
 };
 
-function Button({ primary, label, ...props }: ButtonProps) {
+function LoginButton({ label, onClick, clickable }: ButtonProps) {
   return (
-    <button className={`${styles.btn} ${primary ? "primary" : ""}`} {...props}>
+    <button
+      className={clickable ? styles.btn : styles.btnforbid}
+      onClick={onClick}
+    >
       {label}
     </button>
   );
 }
 
-export default Button;
+export default LoginButton;
