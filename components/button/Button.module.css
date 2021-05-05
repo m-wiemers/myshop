@@ -1,4 +1,6 @@
-.btn {
+.btn,
+.btnforbid {
+  margin-top: 0.5em;
   background-color: var(--button-color);
   text-transform: uppercase;
   font-weight: 700;
@@ -14,11 +16,4 @@
 
 .btnforbid {
   color: gray;
-  background-color: var(--button-color);
-  text-transform: uppercase;
-  font-weight: 700;
-  border-style: none;
-  padding: 1em 1.5em;
-  cursor: pointer;
-  box-shadow: 0.1em 0.1em 0.3em black;
 }

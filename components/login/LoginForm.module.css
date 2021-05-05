@@ -1,0 +1,11 @@
+.container {
+  background-color: var(--button-color);
+  max-width: 250px;
+  text-align: center;
+  color: var(--main-color);
+  padding: 0.5em;
+}
+
+.input {
+  padding: 0.5em;
+}
