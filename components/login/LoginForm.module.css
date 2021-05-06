@@ -1,0 +1,14 @@
+.container {
+  background-color: var(--button-color);
+  color: var(--main-color);
+  padding: 0.5em;
+  text-align: center;
+}
+
+.input {
+  padding: 0.5em;
+}
+
+.button {
+  grid-row-end: end;
+}
