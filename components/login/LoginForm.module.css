@@ -1,11 +1,14 @@
 .container {
   background-color: var(--button-color);
-  max-width: 250px;
-  text-align: center;
   color: var(--main-color);
   padding: 0.5em;
+  text-align: center;
 }
 
 .input {
   padding: 0.5em;
+}
+
+.button {
+  grid-row-end: end;
 }

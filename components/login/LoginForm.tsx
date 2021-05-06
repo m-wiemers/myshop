@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import LoginButton from "../button/Button";
 import styles from "./LoginForm.module.css";
+import Link from "next/link";
 
-function LoginForm(onClick) {
-  const [clickable, setClickable] = useState(false);
-  const [password, setPassword] = useState(false);
-  const [userName, setUserName] = useState(false);
+function LoginForm(onClick, path) {
+  const [userName, setUserName] = useState<boolean>(false);
+  const [password, setPassword] = useState<boolean>(false);
+  const [clickable, setClickable] = useState<boolean>(false);
 
-  function UserNameChange(event) {
-    const value = event.target.value;
-    if (value.length > 2) {
+  function UserNameChange(e) {
+    const value = e.target.value;
+    if (value.length > 3) {
       setUserName(true);
     }
     if (value.length < 3) {
@@ -17,9 +18,9 @@ function LoginForm(onClick) {
     }
   }
 
-  function PasswordChange(event) {
-    const value = event.target.value;
-    if (value.length > 2) {
+  function PasswordChange(e) {
+    const value = e.target.value;
+    if (value.length >= 3) {
       setPassword(true);
     }
     if (value.length < 3) {
@@ -28,28 +29,32 @@ function LoginForm(onClick) {
   }
 
   useEffect(() => {
-    if (password && userName) {
+    if (userName && password) {
       setClickable(true);
     }
-    if (!password || !userName) {
+    if (!userName || !password) {
       setClickable(false);
     }
-  }, [password, userName]);
+  });
 
   return (
     <div className={styles.container}>
       <form>
-        UserName
-        {userName && "👨"}
+        <p>UserName {userName && "👨"}</p>
         <input className={styles.input} onChange={UserNameChange} type="text" />
-        Password
-        {password && "🔑"}
+        <p>Password {password && "🔑"}</p>
         <input
           className={styles.input}
           onChange={PasswordChange}
           type="password"
         />
-        <LoginButton label="LOGIN" clickable={clickable} onClick={onClick} />
+        {clickable && (
+          <div className={styles.button}>
+            <Link href={path}>
+              <LoginButton label="LOGIN" clickable={true} onClick={onClick} />
+            </Link>
+          </div>
+        )}
       </form>
     </div>
   );

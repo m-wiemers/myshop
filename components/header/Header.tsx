@@ -4,7 +4,7 @@ import styles from "./Header.module.css";
 function Header(handleLogin) {
   return (
     <header className={styles.header}>
-      <LoginForm onClick={handleLogin} />
+      <LoginForm path={"products"} onClick={handleLogin} />
     </header>
   );
 }
