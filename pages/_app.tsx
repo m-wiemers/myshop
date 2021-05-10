@@ -1,12 +1,37 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import "../styles/globals.css";
-import Header from "../components/header/Header";
+import { useEffect, useState } from "react";
+import LoginForm from "../components/login/LoginForm";
+import { getPasswordDoc } from "../utils/api";
+import { decryptPassword, PasswordDoc } from "../server/db";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  function handleLogin(e) {
+  const path = "/products";
+  const [user, setUser] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [clickable, setClickable] = useState<boolean>(false);
+  const [passwordDoc, setPasswordDoc] = useState<PasswordDoc>(null);
+
+  async function handleLogin(e) {
     e.preventDefault();
+    const thisUser = await getPasswordDoc(user);
+    setPasswordDoc(thisUser);
+    if (passwordDoc.value === password) {
+      console.log("correct");
+    }
+    console.log(passwordDoc.name);
+    console.log(passwordDoc.value);
   }
+
+  useEffect(() => {
+    if (user.length >= 4 && password.length >= 4) {
+      setClickable(true);
+    }
+    if (user.length < 4 || password.length < 4) {
+      setClickable(false);
+    }
+  }, [user, password]);
 
   return (
     <>
@@ -15,7 +40,17 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <Header handleLogin={handleLogin} />
+        <header>
+          <LoginForm
+            clickable={clickable}
+            onClick={handleLogin}
+            path={path}
+            userName={user}
+            userNameChange={(e) => setUser(e.target.value)}
+            password={password}
+            passwordChange={(e) => setPassword(e.target.value)}
+          />
+        </header>
 
         <main>
           <Component {...pageProps} />

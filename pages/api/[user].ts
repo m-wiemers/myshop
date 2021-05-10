@@ -5,7 +5,8 @@ import { readPasswordDoc, withDatabase } from "../../server/db";
 
 export default withDatabase(
   async (req: NextApiRequest, res: NextApiResponse) => {
-    const passwordDoc = await readPasswordDoc("Google");
+    const user = "Google";
+    const passwordDoc = await readPasswordDoc(`${user}`);
     res.status(200).json(passwordDoc);
   }
 );
