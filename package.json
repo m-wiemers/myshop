@@ -17,7 +17,8 @@
     "storybook": "start-storybook -s ./public -p 6006",
     "build-next": "next build",
     "build-storybook": "build-storybook -s public",
-    "build-server": "tsc --project tsconfig.server.json"
+    "build-server": "tsc --project tsconfig.server.json",
+    "server": "nodemon server/server.ts"
   },
   "dependencies": {
     "crypto-js": "^4.0.0",

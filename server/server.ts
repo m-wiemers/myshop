@@ -12,11 +12,11 @@ const server = http.createServer((request, response) => {
   if (request.url === "/") {
     response.statusCode = 200;
     response.setHeader("Content-Type", "text/html");
-    response.end("<h1>Trasor</h1>");
+    response.end("<h1>Server is running</h1>");
     return;
   }
 
-  const parts = request.url.match(/\/api\/passwords\/(\w+)/);
+  const parts = request.url.match(/\/api\/users\/(\w+)/);
   if (!parts) {
     response.statusCode = 400;
     response.end();
