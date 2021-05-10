@@ -1,51 +1,34 @@
-import { useEffect, useState } from "react";
 import LoginButton from "../button/Button";
 import styles from "./LoginForm.module.css";
 import Link from "next/link";
+import { ChangeEventHandler, MouseEventHandler } from "react";
 
-function LoginForm(onClick, path) {
-  const [userName, setUserName] = useState<boolean>(false);
-  const [password, setPassword] = useState<boolean>(false);
-  const [clickable, setClickable] = useState<boolean>(false);
+export type LoginFormProps = {
+  userName: string;
+  userNameChange: ChangeEventHandler<HTMLInputElement>;
+  password: string;
+  passwordChange: ChangeEventHandler<HTMLInputElement>;
+  clickable: boolean;
+  onClick: MouseEventHandler<HTMLButtonElement>;
+  path: string;
+};
 
-  function UserNameChange(e) {
-    const value = e.target.value;
-    if (value.length > 3) {
-      setUserName(true);
-    }
-    if (value.length < 3) {
-      setUserName(false);
-    }
-  }
-
-  function PasswordChange(e) {
-    const value = e.target.value;
-    if (value.length >= 3) {
-      setPassword(true);
-    }
-    if (value.length < 3) {
-      setPassword(false);
-    }
-  }
-
-  useEffect(() => {
-    if (userName && password) {
-      setClickable(true);
-    }
-    if (!userName || !password) {
-      setClickable(false);
-    }
-  });
-
+function LoginForm({
+  onClick,
+  path,
+  userNameChange,
+  passwordChange,
+  clickable,
+}: LoginFormProps) {
   return (
     <div className={styles.container}>
       <form>
-        <p>UserName {userName && "👨"}</p>
-        <input className={styles.input} onChange={UserNameChange} type="text" />
-        <p>Password {password && "🔑"}</p>
+        <p>UserName</p>
+        <input className={styles.input} onChange={userNameChange} type="text" />
+        <p>Password</p>
         <input
           className={styles.input}
-          onChange={PasswordChange}
+          onChange={passwordChange}
           type="password"
         />
         {clickable && (
