@@ -58,3 +58,10 @@ export function decryptPassword(ciphertext: string) {
   );
   return bytes.toString(CryptoJS.enc.Utf8);
 }
+
+export function encryptPassword(password: string) {
+  return CryptoJS.AES.encrypt(
+    password,
+    process.env.CRYPTO_MASTER_PASSWORD
+  ).toString();
+}

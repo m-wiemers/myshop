@@ -4,24 +4,18 @@ import "../styles/globals.css";
 import { useEffect, useState } from "react";
 import LoginForm from "../components/login/LoginForm";
 import { getPasswordDoc } from "../utils/api";
-import { decryptPassword, PasswordDoc } from "../server/db";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const path = "/products";
   const [user, setUser] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [clickable, setClickable] = useState<boolean>(false);
-  const [passwordDoc, setPasswordDoc] = useState<PasswordDoc>(null);
 
   async function handleLogin(e) {
     e.preventDefault();
     const thisUser = await getPasswordDoc(user);
-    setPasswordDoc(thisUser);
-    if (passwordDoc.value === password) {
-      console.log("correct");
-    }
-    console.log(passwordDoc.name);
-    console.log(passwordDoc.value);
+    console.log(thisUser.name);
+    console.log(thisUser.value);
   }
 
   useEffect(() => {

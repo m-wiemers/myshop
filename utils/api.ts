@@ -8,3 +8,7 @@ async function fetchURL<T>(url: string): Promise<T> {
 export async function getPasswordDoc(name: string): Promise<PasswordDoc> {
   return await fetchURL<PasswordDoc>(`/api/${name}`);
 }
+
+export async function getPasswordDocs(): Promise<PasswordDoc> {
+  return await fetchURL<PasswordDoc>("api/users");
+}
