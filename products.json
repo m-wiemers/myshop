@@ -1,0 +1,30 @@
+[
+  {
+    "headline": "Schuhe",
+    "articlenumber": 14,
+    "desciption": "lorem ipsum",
+    "price": 14.95,
+    "image": "./example.jpg"
+  },
+  {
+    "headline": "Schuhe",
+    "articlenumber": 16,
+    "desciption": "lorem ipsum",
+    "price": 14.95,
+    "image": "./example.jpg"
+  },
+  {
+    "headline": "Schuhe",
+    "articlenumber": 19,
+    "desciption": "lorem ipsum",
+    "price": 14.95,
+    "image": "./example.jpg"
+  },
+  {
+    "headline": "Schuhe",
+    "articlenumber": 2,
+    "desciption": "lorem ipsum",
+    "price": 14.95,
+    "image": "./example.jpg"
+  }
+]

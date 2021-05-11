@@ -7,6 +7,14 @@ export type PasswordDoc = {
   value: string;
 };
 
+export type ProductsDoc = {
+  headline: string;
+  articlenumber: number;
+  desciption: string;
+  price: number;
+  image: string;
+};
+
 let client: MongoClient = null;
 let db: Db = null;
 
@@ -45,6 +53,14 @@ export async function readPasswordDoc(
     name: passwordDoc.name,
     value: passwordDoc.value,
   };
+}
+
+export async function readProductsDoc(): Promise<ProductsDoc[] | null> {
+  const productCollection = await getCollection<ProductsDoc[]>("products");
+  if (!productCollection) {
+    return null;
+  }
+  return productCollection;
 }
 
 export async function closeDB() {
