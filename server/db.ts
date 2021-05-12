@@ -1,6 +1,7 @@
 import { Collection, Db, MongoClient } from "mongodb";
 import CryptoJS from "crypto-js";
 import { NextApiRequest, NextApiResponse } from "next";
+import { getPasswordDoc } from "../utils/api";
 
 export type PasswordDoc = {
   name: string;
@@ -67,6 +68,15 @@ export async function readProductsDoc(): Promise<ProductsDoc | null> {
 
 export async function closeDB() {
   client.close();
+}
+
+export async function checkUserState(name: string, password: string) {
+  const thisUser = await getPasswordDoc(name);
+  if (thisUser.value === encryptPassword(password)) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 export function decryptPassword(ciphertext: string) {
