@@ -1,6 +1,5 @@
 .main {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(3, 20em);
-  grid-row-gap: 1em;
+  align-content: center;
 }

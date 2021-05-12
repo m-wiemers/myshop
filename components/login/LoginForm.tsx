@@ -1,6 +1,5 @@
 import LoginButton from "../button/Button";
 import styles from "./LoginForm.module.css";
-import Link from "next/link";
 import { ChangeEventHandler, MouseEventHandler } from "react";
 
 export type LoginFormProps = {
@@ -8,14 +7,12 @@ export type LoginFormProps = {
   userNameChange: ChangeEventHandler<HTMLInputElement>;
   password: string;
   passwordChange: ChangeEventHandler<HTMLInputElement>;
-  clickable: boolean;
   onClick: MouseEventHandler<HTMLButtonElement>;
-  path: string;
+  clickable: boolean;
 };
 
 function LoginForm({
   onClick,
-  path,
   userNameChange,
   passwordChange,
   clickable,
@@ -33,9 +30,7 @@ function LoginForm({
         />
         {clickable && (
           <div className={styles.button}>
-            <Link href={path}>
-              <LoginButton label="LOGIN" clickable={true} onClick={onClick} />
-            </Link>
+            <LoginButton label="LOGIN" clickable={true} onClick={onClick} />
           </div>
         )}
       </form>

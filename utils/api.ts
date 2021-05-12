@@ -1,4 +1,4 @@
-import { PasswordDoc } from "../server/db";
+import { PasswordDoc, ProductsDoc } from "../server/db";
 
 async function fetchURL<T>(url: string): Promise<T> {
   const response = await fetch(url);
@@ -11,4 +11,8 @@ export async function getPasswordDoc(name: string): Promise<PasswordDoc> {
 
 export async function getPasswordDocs(): Promise<PasswordDoc> {
   return await fetchURL<PasswordDoc>("api/users");
+}
+
+export async function getProducts(): Promise<ProductsDoc[]> {
+  return await fetchURL<ProductsDoc[]>("/api/products");
 }
