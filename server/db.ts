@@ -55,8 +55,10 @@ export async function readPasswordDoc(
   };
 }
 
-export async function readProductsDoc(): Promise<ProductsDoc[] | null> {
-  const productCollection = await getCollection<ProductsDoc[]>("products");
+export async function readProductsDoc(): Promise<ProductsDoc | null> {
+  const productCollection = await getCollection<ProductsDoc>("products")
+    .find({})
+    .toArray();
   if (!productCollection) {
     return null;
   }
